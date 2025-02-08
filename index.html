@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Khaw :&#41;</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff6b6b, #ffc2c2);
+            font-family: 'Kanit', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Landing page styles */
+        .landing-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff6b6b, #ffc2c2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .reveal-button {
+            padding: 15px 30px;
+            font-size: 20px;
+            background: white;
+            border: none;
+            border-radius: 25px;
+            color: #ff4d4d;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .reveal-button:hover {
+            transform: scale(1.05);
+        }
+
+        .reveal-button:active {
+            transform: scale(0.98);
+        }
+
+        /* Valentine card styles */
+        .valentine-content {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            animation: float 3s ease-in-out infinite;
+            margin: 15px;
+        }
+
+        .heart {
+            color: #ff4d4d;
+            font-size: 50px;
+            margin: 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        .message {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0;
+            line-height: 1.5;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        /* Animation keyframes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Floating hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-float {
+            position: absolute;
+            font-size: 20px;
+            animation: floatUp 4s linear infinite;
+        }
+
+        /* Utility classes */
+        .hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .valentine-content.visible {
+            opacity: 1;
+        }
+
+        /* Responsive styles */
+        @media screen and (max-width: 768px) {
+            .card {
+                width: 85%;
+                padding: 1.5rem;
+                margin: 10px;
+            }
+            .message {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+            .heart {
+                font-size: 40px;
+                margin: 15px;
+            }
+            .signature {
+                font-size: 16px;
+            }
+            .heart-float {
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .card {
+                width: 90%;
+                padding: 1rem;
+            }
+            .message {
+                font-size: 16px;
+                line-height: 1.4;
+            }
+            .heart {
+                font-size: 32px;
+                margin: 10px;
+            }
+            .signature {
+                font-size: 14px;
+            }
+            .reveal-button {
+                padding: 12px 24px;
+                font-size: 18px;
+            }
+        }
+
+        /* Performance optimizations */
+        @media (prefers-reduced-motion: reduce) {
+            .card {
+                animation: none;
+            }
+            .heart {
+                animation: pulse 2s ease-in-out infinite;
+            }
+            .heart-float {
+                animation-duration: 6s;
+            }
+        }
+
+        /* เพิ่ม style สำหรับรูปภาพ */
+        .photo-container {
+            margin: 20px auto;
+            max-width: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-container:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ปรับแต่งสำหรับมือถือ */
+        @media screen and (max-width: 480px) {
+            .photo-container {
+                max-width: 250px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="landing-page" id="landingPage">
+       <button class="reveal-button" onclick="revealCard()">💝 เปิดการ์ดวาเลนไทน์ 💝</button>
+    </div>
+
+    <div class="valentine-content" id="valentineContent">
+        <div class="floating-hearts"></div>
+        <div class="card">
+            <!-- เพิ่มส่วนรูปภาพตรงนี้ -->
+            <div class="photo-container">
+                <img src="https://scontent.fbkk13-1.fna.fbcdn.net/v/t39.30808-6/458340761_1536478053608449_2438260937048270281_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ySAiwYNLnEAQ7kNvgG-jdq_&_nc_oc=AdgiAndsT4OEBUyVKcC331a7tIBF2LIh_zLycXGRRI5jjEqZhj-86mxUNtXWh7ZPOrw-1VxzZa7mej6RcbJJlj2F&_nc_zt=23&_nc_ht=scontent.fbkk13-1.fna&_nc_gid=A40s6zF0jT3mPu7c2D4ta_o&oh=00_AYAp41aSSzXLRUHXVbRcuB30l9b0qUiS56nmbLgZC0572g&oe=67AD2072" alt="forkhaw">
+            </div>
+            <div class="message">
+                เทสระบบ<br>
+                เทสระบบ<br>
+                เทสระบบ<br>
+                เทสระบบ
+            </div>
+            <div class="signature">จาก: เพชร</div>
+        </div>
+    </div>
+
+    <script>
+        // Add reveal functionality
+        function revealCard() {
+            document.getElementById('landingPage').classList.add('hidden');
+            document.getElementById('valentineContent').classList.add('visible');
+            // Start creating hearts after reveal
+            setTimeout(() => {
+                setInterval(createHeart, 300);
+            }, 800);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart-float';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.querySelector('.floating-hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
