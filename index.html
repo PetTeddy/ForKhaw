@@ -146,64 +146,109 @@
             opacity: 1;
         }
 
- 
+        @media screen and (max-width: 1024px) {
+            .card {
+                width: 80%;
+                max-width: 500px;
+                padding: 1.8rem;
+            }
+
+            .message {
+                font-size: 22px;
+            }
+
+            .photo-container {
+                max-width: 280px;
+            }
+        }
+
         @media screen and (max-width: 768px) {
             .card {
                 width: 85%;
                 padding: 1.5rem;
-                margin: 10px;
+                margin: 12px;
             }
+
             .message {
-                font-size: 18px;
+                font-size: 20px;
                 line-height: 1.6;
             }
+
             .heart {
-                font-size: 40px;
-                margin: 15px;
+                font-size: 35px;
             }
-            .signature {
-                font-size: 16px;
+
+            .photo-container {
+                max-width: 250px;
             }
-            .heart-float {
-                font-size: 16px;
+
+            .reveal-button {
+                padding: 14px 28px;
+                font-size: 18px;
             }
         }
 
         @media screen and (max-width: 480px) {
             .card {
-                width: 90%;
+                width: 92%;
+                padding: 1.2rem;
+                margin: 8px;
+            }
+
+            .message {
+                font-size: 18px;
+                line-height: 1.5;
+            }
+
+            .heart {
+                font-size: 30px;
+            }
+
+            .signature {
+                font-size: 16px;
+                margin-top: 15px;
+            }
+
+            .photo-container {
+                max-width: 220px;
+            }
+
+            .reveal-button {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
+        }
+
+        @media screen and (max-width: 320px) {
+            .card {
+                width: 95%;
                 padding: 1rem;
             }
+
             .message {
                 font-size: 16px;
                 line-height: 1.4;
             }
-            .heart {
-                font-size: 32px;
-                margin: 10px;
+
+            .photo-container {
+                max-width: 200px;
             }
-            .signature {
-                font-size: 14px;
-            }
+
             .reveal-button {
-                padding: 12px 24px;
-                font-size: 18px;
+                padding: 10px 20px;
+                font-size: 15px;
             }
         }
 
+        @media (hover: none) {
+            .reveal-button:hover {
+                transform: none;
+            }
 
-        @media (prefers-reduced-motion: reduce) {
-            .card {
-                animation: none;
-            }
-            .heart {
-                animation: pulse 2s ease-in-out infinite;
-            }
-            .heart-float {
-                animation-duration: 6s;
+            .photo-container:hover img {
+                transform: none;
             }
         }
-
 
         .photo-container {
             margin: 20px auto;
@@ -222,13 +267,6 @@
 
         .photo-container:hover img {
             transform: scale(1.05);
-        }
-
-
-        @media screen and (max-width: 480px) {
-            .photo-container {
-                max-width: 250px;
-            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
