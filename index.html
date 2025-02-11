@@ -146,107 +146,112 @@
             opacity: 1;
         }
 
-        @media screen and (max-width: 1024px) {
-            .card {
-                width: 80%;
-                max-width: 500px;
-                padding: 1.8rem;
-            }
-
-            .message {
-                font-size: 22px;
-            }
-
-            .photo-container {
-                max-width: 280px;
-            }
+        :root {
+            --min-font: 16;
+            --max-font: 24;
+            --min-width: 320;
+            --max-width: 1200;
+            --font-diff: calc(var(--max-font) - var(--min-font));
+            --width-diff: calc(var(--max-width) - var(--min-width));
         }
 
-        @media screen and (max-width: 768px) {
+        .message {
+            font-size: clamp(16px, 
+                calc(16px + var(--font-diff) * ((100vw - 320px) / var(--width-diff))), 
+                24px);
+        }
+
+        @media screen and (max-width: 1200px) {
             .card {
                 width: 85%;
-                padding: 1.5rem;
-                margin: 12px;
+                max-width: 800px;
+                padding: calc(1rem + 1vw);
             }
-
-            .message {
-                font-size: 20px;
-                line-height: 1.6;
-            }
-
-            .heart {
-                font-size: 35px;
-            }
-
+            
             .photo-container {
-                max-width: 250px;
-            }
-
-            .reveal-button {
-                padding: 14px 28px;
-                font-size: 18px;
+                max-width: min(300px, 80%);
             }
         }
 
-        @media screen and (max-width: 480px) {
+        @media screen and (max-width: 900px) {
             .card {
-                width: 92%;
-                padding: 1.2rem;
-                margin: 8px;
+                width: 90%;
+                margin: 10px;
             }
-
-            .message {
-                font-size: 18px;
-                line-height: 1.5;
-            }
-
+            
             .heart {
-                font-size: 30px;
-            }
-
-            .signature {
-                font-size: 16px;
-                margin-top: 15px;
-            }
-
-            .photo-container {
-                max-width: 220px;
-            }
-
-            .reveal-button {
-                padding: 12px 24px;
-                font-size: 16px;
+                font-size: max(35px, 5vw);
             }
         }
 
-        @media screen and (max-width: 320px) {
+        @media screen and (max-width: 600px) {
             .card {
                 width: 95%;
-                padding: 1rem;
+                padding: 15px;
+                margin: 8px;
             }
-
-            .message {
-                font-size: 16px;
-                line-height: 1.4;
+            
+            .reveal-button {
+                padding: 12px 24px;
+                font-size: max(16px, 3.5vw);
             }
+            
+            .signature {
+                font-size: max(14px, 3vw);
+            }
+            
+            .photo-container {
+                max-width: min(250px, 90%);
+            }
+        }
 
+        @media screen and (max-width: 400px) {
+            .card {
+                width: 98%;
+                padding: 10px;
+            }
+            
+            .message br {
+                display: none;
+            }
+        }
+
+        @media screen and (max-height: 600px) and (orientation: landscape) {
+            .card {
+                margin: 5px;
+                padding: 10px;
+            }
+            
             .photo-container {
                 max-width: 200px;
             }
-
-            .reveal-button {
-                padding: 10px 20px;
-                font-size: 15px;
+            
+            .message {
+                margin: 10px 0;
             }
         }
 
         @media (hover: none) {
-            .reveal-button:hover {
-                transform: none;
+            .reveal-button:hover,
+            .reveal-button:active {
+                transform: scale(0.98);
             }
-
+            
             .photo-container:hover img {
                 transform: none;
+            }
+        }
+
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .card {
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        @supports (padding: env(safe-area-inset-top)) {
+            .landing-page, .valentine-content {
+                padding: env(safe-area-inset-top) env(safe-area-inset-right)
+                        env(safe-area-inset-bottom) env(safe-area-inset-left);
             }
         }
 
