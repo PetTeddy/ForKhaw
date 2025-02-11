@@ -146,114 +146,64 @@
             opacity: 1;
         }
 
-        :root {
-            --min-font: 16;
-            --max-font: 24;
-            --min-width: 320;
-            --max-width: 1200;
-            --font-diff: calc(var(--max-font) - var(--min-font));
-            --width-diff: calc(var(--max-width) - var(--min-width));
-        }
 
-        .message {
-            font-size: clamp(16px, 
-                calc(16px + var(--font-diff) * ((100vw - 320px) / var(--width-diff))), 
-                24px);
-        }
-
-        @media screen and (max-width: 1200px) {
+        @media screen and (max-width: 768px) {
             .card {
                 width: 85%;
-                max-width: 800px;
-                padding: calc(1rem + 1vw);
-            }
-            
-            .photo-container {
-                max-width: min(300px, 80%);
-            }
-        }
-
-        @media screen and (max-width: 900px) {
-            .card {
-                width: 90%;
+                padding: 1.5rem;
                 margin: 10px;
             }
-            
+            .message {
+                font-size: 18px;
+                line-height: 1.6;
+            }
             .heart {
-                font-size: max(35px, 5vw);
+                font-size: 40px;
+                margin: 15px;
+            }
+            .signature {
+                font-size: 16px;
+            }
+            .heart-float {
+                font-size: 16px;
             }
         }
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 480px) {
             .card {
-                width: 95%;
-                padding: 15px;
-                margin: 8px;
+                width: 90%;
+                padding: 1rem;
             }
-            
+            .message {
+                font-size: 16px;
+                line-height: 1.4;
+            }
+            .heart {
+                font-size: 32px;
+                margin: 10px;
+            }
+            .signature {
+                font-size: 14px;
+            }
             .reveal-button {
                 padding: 12px 24px;
-                font-size: max(16px, 3.5vw);
-            }
-            
-            .signature {
-                font-size: max(14px, 3vw);
-            }
-            
-            .photo-container {
-                max-width: min(250px, 90%);
+                font-size: 18px;
             }
         }
 
-        @media screen and (max-width: 400px) {
+
+        @media (prefers-reduced-motion: reduce) {
             .card {
-                width: 98%;
-                padding: 10px;
+                animation: none;
             }
-            
-            .message br {
-                display: none;
+            .heart {
+                animation: pulse 2s ease-in-out infinite;
             }
-        }
-
-        @media screen and (max-height: 600px) and (orientation: landscape) {
-            .card {
-                margin: 5px;
-                padding: 10px;
-            }
-            
-            .photo-container {
-                max-width: 200px;
-            }
-            
-            .message {
-                margin: 10px 0;
+            .heart-float {
+                animation-duration: 6s;
             }
         }
 
-        @media (hover: none) {
-            .reveal-button:hover,
-            .reveal-button:active {
-                transform: scale(0.98);
-            }
-            
-            .photo-container:hover img {
-                transform: none;
-            }
-        }
-
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-            .card {
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-            }
-        }
-
-        @supports (padding: env(safe-area-inset-top)) {
-            .landing-page, .valentine-content {
-                padding: env(safe-area-inset-top) env(safe-area-inset-right)
-                        env(safe-area-inset-bottom) env(safe-area-inset-left);
-            }
-        }
 
         .photo-container {
             margin: 20px auto;
@@ -273,6 +223,13 @@
         .photo-container:hover img {
             transform: scale(1.05);
         }
+
+
+        @media screen and (max-width: 480px) {
+            .photo-container {
+                max-width: 250px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
@@ -284,21 +241,21 @@
     <div class="valentine-content" id="valentineContent">
         <div class="floating-hearts"></div>
         <div class="card">
+            <!-- เพิ่มส่วนรูปภาพตรงนี้ -->
             <div class="photo-container">
-                <img src="https://cdn.jsdelivr.net/gh/PetTeddy/ForKhaw/Khaw.jpg" alt="forkhaw">
+                <img src="https://scontent.fbkk13-1.fna.fbcdn.net/v/t39.30808-6/458340761_1536478053608449_2438260937048270281_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ySAiwYNLnEAQ7kNvgG-jdq_&_nc_oc=AdgiAndsT4OEBUyVKcC331a7tIBF2LIh_zLycXGRRI5jjEqZhj-86mxUNtXWh7ZPOrw-1VxzZa7mej6RcbJJlj2F&_nc_zt=23&_nc_ht=scontent.fbkk13-1.fna&_nc_gid=A40s6zF0jT3mPu7c2D4ta_o&oh=00_AYAp41aSSzXLRUHXVbRcuB30l9b0qUiS56nmbLgZC0572g&oe=67AD2072" alt="forkhaw">
             </div>
             <div class="message">
-                สุขสันต์วันวาเลนไทน์นะครับข้าว ตั้งใจเรียน<br>
-                ขอให้ข้าวน่ารักและมีความสุขแบบนี้ตลอดไปครับ<br>
-                อย่าลืมว่าความสำเร็จเริ่มจากวันนี้<br>
-                "อยากรู้อนาคต ให้ดูปัจจุบัน"
+                เทสระบบ<br>
+                เทสระบบ<br>
+                เทสระบบ<br>
+                เทสระบบ
             </div>
-            <div class="signature">จาก : เพชร</div>
+            <div class="signature">จาก: เพชร</div>
         </div>
     </div>
 
     <script>
-
         function revealCard() {
             document.getElementById('landingPage').classList.add('hidden');
             document.getElementById('valentineContent').classList.add('visible');
