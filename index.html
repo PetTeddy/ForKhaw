@@ -17,7 +17,7 @@
             overflow: hidden;
         }
 
-        /* Landing page styles */
+
         .landing-page {
             position: fixed;
             top: 0;
@@ -53,7 +53,7 @@
             transform: scale(0.98);
         }
 
-        /* Valentine card styles */
+
         .valentine-content {
             opacity: 0;
             transition: opacity 1s ease-in-out;
@@ -97,7 +97,7 @@
             color: #666;
         }
 
-        /* Animation keyframes */
+
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
@@ -119,7 +119,7 @@
             }
         }
 
-        /* Floating hearts */
+
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -136,7 +136,7 @@
             animation: floatUp 4s linear infinite;
         }
 
-        /* Utility classes */
+
         .hidden {
             opacity: 0;
             pointer-events: none;
@@ -146,7 +146,7 @@
             opacity: 1;
         }
 
-        /* Responsive styles */
+ 
         @media screen and (max-width: 768px) {
             .card {
                 width: 85%;
@@ -191,7 +191,7 @@
             }
         }
 
-        /* Performance optimizations */
+
         @media (prefers-reduced-motion: reduce) {
             .card {
                 animation: none;
@@ -204,7 +204,7 @@
             }
         }
 
-        /* เพิ่ม style สำหรับรูปภาพ */
+
         .photo-container {
             margin: 20px auto;
             max-width: 300px;
@@ -224,7 +224,7 @@
             transform: scale(1.05);
         }
 
-        /* ปรับแต่งสำหรับมือถือ */
+
         @media screen and (max-width: 480px) {
             .photo-container {
                 max-width: 250px;
@@ -241,9 +241,8 @@
     <div class="valentine-content" id="valentineContent">
         <div class="floating-hearts"></div>
         <div class="card">
-            <!-- เพิ่มส่วนรูปภาพตรงนี้ -->
             <div class="photo-container">
-                <img src="/img/1739174020061_547512216002494947.jpg" alt="forkhaw">
+                <img src="https://cdn.jsdelivr.net/gh/PetTeddy/ForKhaw/Khaw.jpg" alt="forkhaw">
             </div>
             <div class="message">
                 สุขสันต์วันวาเลนไทน์นะครับข้าว ตั้งใจเรียน<br>
@@ -256,11 +255,10 @@
     </div>
 
     <script>
-        // Add reveal functionality
+
         function revealCard() {
             document.getElementById('landingPage').classList.add('hidden');
             document.getElementById('valentineContent').classList.add('visible');
-            // Start creating hearts after reveal
             setTimeout(() => {
                 setInterval(createHeart, 300);
             }, 800);
